@@ -1,0 +1,210 @@
+div.board
+{
+	background:radial-gradient(#224334,#132220);
+	max-width:430px;
+	height:450px;
+	margin:auto;
+	margin-top:7%;
+	border:solid 40px #F0B487;
+	border-radius:15px;
+	font-family:raleway;
+	-webkit-box-shadow:0 8px 10px gray , -10px 8px 15px gray , 10px 8px 15px gray;
+	box-shadow:0 15px 10px #555 , -5px 15px 15px gray , 5px 15px 15px gray;
+	text-align:center;
+}
+div.board h1
+{
+	margin-top:60px;
+	color:#FFF;
+	margin-left:20px;
+	margin-right:20px;
+	font-size:40px;
+	text-align:center;
+}
+div.board p
+{
+	color:#8E9794;
+	margin-left:20px;
+	margin-right:20px;
+	font-size:27px;
+	display:inline-block;
+}
+div.board p span
+{
+	padding:10px;
+}
+div.board p span:hover
+{
+	border:dotted 2px #FFF;
+	border-radius:22px;
+	cursor:pointer;
+	color:#FFF;
+}
+div.board p.back
+{
+	display:block;
+}
+div.board table
+{
+	width:100%;
+	height:100%;
+	cursor:pointer;
+	border-collapse:collapse;
+	border:none;
+	font-size:40px;
+	color:#FFF;
+}
+div.board table td
+{
+	border:solid 2px #FFF;
+	width:33%;
+	height:33%;
+	font-size:70px;
+}
+/*removing outer border of the table */
+div.board table tr:nth-of-type(1) td:nth-of-type(1) , 
+div.board table tr:nth-of-type(1) td:nth-of-type(2) ,
+div.board table tr:nth-of-type(1) td:nth-of-type(3)
+{
+	border-top:none;
+}
+div.board table tr:nth-of-type(1) td:nth-of-type(3) , 
+div.board table tr:nth-of-type(2) td:nth-of-type(3) ,
+div.board table tr:nth-of-type(3) td:nth-of-type(3)
+{
+	border-right:none;
+}
+div.board table tr:nth-of-type(1) td:nth-of-type(1) , 
+div.board table tr:nth-of-type(2) td:nth-of-type(1) ,
+div.board table tr:nth-of-type(3) td:nth-of-type(1)
+{
+	border-left:none;
+}
+div.board table tr:nth-of-type(3) td:nth-of-type(1) , 
+div.board table tr:nth-of-type(3) td:nth-of-type(2) ,
+div.board table tr:nth-of-type(3) td:nth-of-type(3)
+{
+	border-bottom:none;
+}
+.pos
+{
+	position:relative;
+}
+div.pos
+{
+	border-top-width:60px;
+}
+div.pos div
+{
+	position:absolute;
+	top:-47px;
+	margin:0;
+	padding:0;
+	right:0;
+	width:100%;
+	position:relative;
+}
+div.pos div p
+{
+	display:inline-block;
+	margin:0;
+	padding:0;
+	color:#000;
+	font-size:20px;
+	font-family:raleway;
+}
+div.pos div p.reset-all
+{
+	position:absolute;
+	right:40px;
+	top:3px;
+	cursor:pointer;
+	border-radius:10px;
+	padding:4px;
+	border:none 1px #FFF;
+}
+div.pos div p.reset-all:hover
+{
+	border-style:dotted;
+}
+div.pos div p.player2
+{
+	position:absolute;
+	right:240px;
+}
+div.pos div p.player1
+{
+	position:absolute;
+	right:350px;
+}
+.slide-up1 , .slide-up2
+{
+	position:absolute;
+	margin:0;
+	font-size:24px;
+	color:#FFF !important;
+	top:-108px;
+	padding:10px;
+	padding-right:17px;
+	padding-left:17px;
+}
+.slide-up1
+{
+	left:-35px;
+	background-color:#00C8C8;
+	-webkit-transition:top 1s;
+	transition:top 1s;
+}
+.slide-up2
+{
+	right:-35px;
+	background-color:#C86464;
+	-webkit-transition:top 1s;
+	transition:top 1s;
+}
+div.pos div.result
+{
+	max-width:430px;
+	height:450px;
+	opacity:0.8;
+	background:#234535;
+	position:absolute;
+	top:0;
+	left:0;
+	display:none;
+	-webkit-transition:display 1s;
+	transition:display 1s;
+}
+div.pos div.result p
+{
+	color:#FFF;
+	margin:auto;
+	font-size:40px;
+	margin-top:205px;
+	font-weight:bolder;
+}
+/*classes*/
+.winner
+{
+	color:#00B4B4;
+	background-color:#000;
+}
+.x
+{
+	font-size:44px !important;
+}
+.o
+{
+	font-size:44px !important;
+}
+/*hide all except choosing players board*/
+#onePlayerBoard , #twoPlayersBoard , #gameBoard , #result
+{
+	display:none;
+}
+/* setting top to -55px to slide down the div and setting it to -108px slides up the div */
+ div.pos p.slide-up1 , div.pos p.slide-up2
+{
+	top:-55px;
+	z-index:-1;
+}
