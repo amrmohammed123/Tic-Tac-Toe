@@ -165,15 +165,201 @@ $(document).ready(function(){
 			}
 			else{
 				if(currentPlayer == 2){
-					$(".slide-up1").css("top","-55px"); //show slide-up1
-					$(".slide-up2").css("top","-108px"); //hide slide-up1
+					$(".slide-up1").css("top","-55px"); //hide slide-up1
+					$(".slide-up2").css("top","-108px"); //show slide-up1
 				}
 				else{
-					$(".slide-up1").css("top","-108px");//hide slide-up1
-					$(".slide-up2").css("top","-55px");//show slide-up2
+					$(".slide-up1").css("top","-108px");//show slide-up1
+					$(".slide-up2").css("top","-55px");//hide slide-up2
 				}
 			}
-		} 
+		}
+		else{ //one Player
+			if(playerOneIsX){
+				$(this).text("X");
+			}
+			else{
+				$(this).text("O");
+			}
+			//check if player 1 won
+			winner = checkEndOfTheGame();
+			if(winner){
+				$(".slide-up1").css("top","-55px"); //hide slide-up1
+				$(".slide-up2").css("top","-55px"); //hide slide-up1
+				if(playerOneIsX){
+					if(winner == "X"){
+						playerOneScore++;
+						$(".player1").html("Player1<br>" + playerOneScore);
+						$("#result").html("<p>Player1 Won</p>");
+						$("#result").show();
+						setTimeout(function(){
+							currentPlayer = 1;
+							winner = "";
+							$("#result").hide();
+							$("td").removeClass("winner");
+							$("td").text(""); //clear the game board
+							$(".slide-up1").css("top","-108px");
+							$(".slide-up2").css("top","-55px");
+						},1000);
+					}
+					else{
+						playerTwoScore++;
+						$(".player2").html("Computer<br>" + playerTwoScore);
+						$("#result").html("<p>Computer Won</p>");
+						$("#result").show();
+						setTimeout(function(){
+							currentPlayer = 1;
+							winner = "";
+							$("#result").hide();
+							$("td").removeClass("winner");
+							$("td").text(""); //clear the game board
+							$(".slide-up1").css("top","-108px");
+							$(".slide-up2").css("top","-55px");
+						},1000);
+					}
+				}
+				else{
+					if(winner == "O"){
+						playerOneScore++;
+						$(".player1").html("Player1<br>" + playerOneScore);
+						$("#result").html("<p>Player1 Won</p>");
+						$("#result").show();
+						setTimeout(function(){
+							currentPlayer = 1;
+							winner = "";
+							$("#result").hide();
+							$("td").removeClass("winner");
+							$("td").text(""); //clear the game board
+							$(".slide-up1").css("top","-108px");
+							$(".slide-up2").css("top","-55px");
+						},1000);
+					}
+					else{
+						playerTwoScore++;
+						$(".player2").html("Computer<br>" + playerTwoScore);
+						$("#result").html("<p>Computer Won</p>");
+						$("#result").show();
+						setTimeout(function(){
+							currentPlayer = 1;
+							winner = "";
+							$("#result").hide();
+							$("td").removeClass("winner");
+							$("td").text(""); //clear the game board
+							$(".slide-up1").css("top","-108px");
+							$(".slide-up2").css("top","-55px");
+						},1000);
+					}
+				}
+			}
+			else if(draw()){
+				$("#result").html("<p>Draw</p>");
+				$("#result").show();
+				setTimeout(function(){
+					currentPlayer = 1;
+					winner = "";
+					$("#result").hide();
+					$("td").text(""); //clear the game board
+					$(".slide-up1").css("top","-108px");
+					$(".slide-up2").css("top","-55px");
+				},1000);
+			}
+			else{
+				$(".slide-up1").css("top","-55px");//hide slide-up1
+				$(".slide-up2").css("top","-108px");//show slide-up2
+				$("td").css("pointer-events","none");
+				setTimeout(function(){
+					$(".slide-up1").css("top","-108px");//show slide-up1
+					$(".slide-up2").css("top","-55px");//hide slide-up2
+					if(playerOneIsX)
+						play("O");
+					else
+						play("X");
+					//check if the computer won
+					winner = checkEndOfTheGame();
+					if(winner){
+						$(".slide-up1").css("top","-55px"); //hide slide-up1
+						$(".slide-up2").css("top","-55px"); //hide slide-up1
+						if(playerOneIsX){
+							if(winner == "X"){
+								playerOneScore++;
+								$(".player1").html("Player1<br>" + playerOneScore);
+								$("#result").html("<p>Player1 Won</p>");
+								$("#result").show();
+								setTimeout(function(){
+									currentPlayer = 1;
+									winner = "";
+									$("#result").hide();
+									$("td").removeClass("winner");
+									$("td").text(""); //clear the game board
+									$(".slide-up1").css("top","-108px");
+									$(".slide-up2").css("top","-55px");
+								},1000);
+							}
+							else{
+								playerTwoScore++;
+								$(".player2").html("Computer<br>" + playerTwoScore);
+								$("#result").html("<p>Computer Won</p>");
+								$("#result").show();
+								setTimeout(function(){
+									currentPlayer = 1;
+									winner = "";
+									$("#result").hide();
+									$("td").removeClass("winner");
+									$("td").text(""); //clear the game board
+									$(".slide-up1").css("top","-108px");
+									$(".slide-up2").css("top","-55px");
+								},1000);
+							}
+						}
+						else{
+							if(winner == "O"){
+								playerOneScore++;
+								$(".player1").html("Player1<br>" + playerOneScore);
+								$("#result").html("<p>Player1 Won</p>");
+								$("#result").show();
+								setTimeout(function(){
+									currentPlayer = 1;
+									winner = "";
+									$("#result").hide();
+									$("td").removeClass("winner");
+									$("td").text(""); //clear the game board
+									$(".slide-up1").css("top","-108px");
+									$(".slide-up2").css("top","-55px");
+								},1000);
+							}
+							else{
+								playerTwoScore++;
+								$(".player2").html("Computer<br>" + playerTwoScore);
+								$("#result").html("<p>Computer Won</p>");
+								$("#result").show();
+								setTimeout(function(){
+									currentPlayer = 1;
+									winner = "";
+									$("#result").hide();
+									$("td").removeClass("winner");
+									$("td").text(""); //clear the game board
+									$(".slide-up1").css("top","-108px");
+									$(".slide-up2").css("top","-55px");
+								},1000);
+							}
+						}
+					}
+					else if(draw()){
+						$("#result").html("<p>Draw</p>");
+						$("#result").show();
+						setTimeout(function(){
+							currentPlayer = 1;
+							winner = "";
+							$("#result").hide();
+							$("td").text(""); //clear the game board
+							$(".slide-up1").css("top","-108px");
+							$(".slide-up2").css("top","-55px");
+						},1000);
+					}					
+					$("td").css("pointer-events","auto");
+				},1000);
+			}		
+		}
 	});
 });
 function checkEndOfTheGame(){
@@ -234,4 +420,186 @@ function draw(){
 	return $("#0").text() != "" && $("#1").text() != "" && $("#2").text() != "" &&
 		$("#3").text() != "" && $("#4").text() != "" && $("#5").text() != "" &&
 		$("#6").text() != "" && $("#7").text() != "" && $("#8").text() != "";
+}
+function play(s)
+{
+	var i = 0 , cells = [] , s2;
+	if(s == "X")
+		s2 = "O";
+	else
+		s2 = "X";
+	//check if the computer can win then do the winning move
+	//rows
+	if(($("#0").text() == s && $("#1").text() == s && $("#2").text() == "") 
+	   || ($("#0").text() == s && $("#2").text() == s && $("#1").text() == "")
+	  || ($("#1").text() == s && $("#2").text() == s && $("#0").text() == "")){
+		$("#0").text(s);
+		$("#1").text(s);
+		$("#2").text(s);
+		return;
+	}
+	if(($("#3").text() == s && $("#4").text() == s && $("#5").text() == "")
+	   || ($("#3").text() == s && $("#5").text() == s && $("#4").text() == "")
+	  || ($("#4").text() == s && $("#5").text() == s && $("#3").text() == "")){
+		$("#3").text(s);
+		$("#4").text(s);
+		$("#5").text(s);
+		return;
+	}	
+	if(($("#6").text() == s && $("#7").text() == s && $("#8").text() == "") 
+	   || ($("#6").text() == s && $("#8").text() == s && $("#7").text() == "")
+	  || ($("#7").text() == s && $("#8").text() == s && $("#6").text() == "")){
+		$("#6").text(s);
+		$("#7").text(s);
+		$("#8").text(s);
+		return;
+	}
+	//cols
+	if(($("#0").text() == s && $("#3").text() == s && $("#6").text() == "") 
+	   || ($("#0").text() == s && $("#6").text() == s && $("#3").text() == "")
+	  || ($("#3").text() == s && $("#6").text() == s && $("#0").text() == "")){
+		$("#0").text(s);
+		$("#3").text(s);
+		$("#6").text(s);
+		return;
+	}
+	if(($("#1").text() == s && $("#4").text() == s && $("#7").text() == "") 
+	   || ($("#1").text() == s && $("#7").text() == s && $("#4").text() == "")
+	  || ($("#4").text() == s && $("#7").text() == s && $("#1").text() == "")){
+		$("#1").text(s);
+		$("#4").text(s);
+		$("#7").text(s);
+		return;
+	}	
+	if(($("#2").text() == s && $("#5").text() == s && $("#8").text() == "") 
+	   || ($("#2").text() == s && $("#8").text() == s && $("#5").text() == "")
+	  || ($("#5").text() == s && $("#8").text() == s && $("#2").text() == "")){
+		$("#2").text(s);
+		$("#5").text(s);
+		$("#8").text(s);
+		return;
+	}
+	//diagonals
+	if(($("#0").text() == s && $("#4").text() == s && $("#8").text() == "") 
+	   || ($("#0").text() == s && $("#8").text() == s && $("#4").text() == "")
+	  || ($("#4").text() == s && $("#8").text() == s && $("#0").text() == "")){
+		$("#0").text(s);
+		$("#4").text(s);
+		$("#8").text(s);
+		return;
+	}
+	if(($("#2").text() == s && $("#4").text() == s && $("#6").text() == "") 
+	   || ($("#2").text() == s && $("#6").text() == s && $("#4").text() == "")
+	  || ($("#4").text() == s && $("#6").text() == s && $("#2").text() == "")){
+		$("#2").text(s);
+		$("#4").text(s);
+		$("#6").text(s);
+		return;
+	}
+	//check if the computer about to lose then prevent it
+	//rows
+	if($("#0").text() == s2 && $("#1").text() == s2 && $("#2").text() == ""){	   
+		$("#2").text(s);
+		return;
+	}
+	if($("#0").text() == s2 && $("#2").text() == s2 && $("#1").text() == ""){	   
+		$("#1").text(s);
+		return;
+	}
+	if($("#1").text() == s2 && $("#2").text() == s2 && $("#0").text() == ""){	   
+		$("#0").text(s);
+		return;
+	}
+	if($("#3").text() == s2 && $("#4").text() == s2 && $("#5").text() == ""){
+		$("#5").text(s);
+		return;
+	}
+	if($("#3").text() == s2 && $("#5").text() == s2 && $("#4").text() == ""){
+		$("#4").text(s);
+		return;
+	}
+	if($("#4").text() == s2 && $("#5").text() == s2 && $("#3").text() == ""){
+		$("#3").text(s);
+		return;
+	}
+	if($("#6").text() == s2 && $("#7").text() == s2 && $("#8").text() == ""){ 
+		$("#8").text(s);
+		return;
+	}
+	if($("#6").text() == s2 && $("#8").text() == s2 && $("#7").text() == ""){ 
+		$("#7").text(s);
+		return;
+	}
+	if($("#7").text() == s2 && $("#8").text() == s2 && $("#6").text() == ""){ 
+		$("#6").text(s);
+		return;
+	}
+	//cols
+	if($("#0").text() == s2 && $("#3").text() == s2 && $("#6").text() == ""){ 
+		$("#6").text(s);
+		return;
+	}
+	if($("#0").text() == s2 && $("#6").text() == s2 && $("#3").text() == ""){ 
+		$("#3").text(s);
+		return;
+	}
+	if($("#3").text() == s2 && $("#6").text() == s2 && $("#0").text() == ""){ 
+		$("#0").text(s);
+		return;
+	}
+	if($("#1").text() == s2 && $("#4").text() == s2 && $("#7").text() == ""){ 
+		$("#7").text(s);
+		return;
+	}	
+	if($("#1").text() == s2 && $("#7").text() == s2 && $("#4").text() == ""){ 
+		$("#4").text(s);
+		return;
+	}	
+	if($("#4").text() == s2 && $("#7").text() == s2 && $("#1").text() == ""){ 
+		$("#1").text(s);
+		return;
+	}	
+	if($("#2").text() == s2 && $("#5").text() == s2 && $("#8").text() == ""){ 
+		$("#8").text(s);
+		return;
+	}
+	if($("#2").text() == s2 && $("#8").text() == s2 && $("#5").text() == ""){ 
+		$("#5").text(s);
+		return;
+	}
+	if($("#5").text() == s2 && $("#8").text() == s2 && $("#2").text() == ""){ 
+		$("#2").text(s);
+		return;
+	}
+	//diagonals
+	if($("#0").text() == s2 && $("#4").text() == s2 && $("#8").text() == ""){ 
+		$("#8").text(s);
+		return;
+	}
+	if($("#0").text() == s2 && $("#8").text() == s2 && $("#4").text() == ""){ 
+		$("#4").text(s);
+		return;
+	}
+	if($("#4").text() == s2 && $("#8").text() == s2 && $("#0").text() == ""){ 
+		$("#0").text(s);
+		return;
+	}
+	if($("#2").text() == s2 && $("#4").text() == s2 && $("#6").text() == ""){ 
+		$("#6").text(s);
+		return;
+	}
+	if($("#2").text() == s2 && $("#6").text() == s2 && $("#4").text() == ""){ 
+		$("#4").text(s);
+		return;
+	}
+	if($("#4").text() == s2 && $("#6").text() == s2 && $("#2").text() == ""){ 
+		$("#2").text(s);
+		return;
+	}
+	//play randomly
+	for(i = 0 ; i < 9 ; i++){
+		if($("#" + i).text() == "")
+			cells.push(i);
+	}
+	$("#" + cells[Math.floor(Math.random() * cells.length)]).text(s);
 }
